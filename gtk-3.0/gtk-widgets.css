@@ -71,6 +71,14 @@
     outline-offset: 5px;
 }
 
+/**************
+ * background *
+ **************/
+.background {
+    background-color: @bg_color;
+    border-width: 0;
+}
+
 GtkWindow {
     color: @fg_color;
     background-color: @bg_color;
@@ -115,14 +123,6 @@ GtkAssistant .sidebar {
     text-shadow: 0 1px shade (@bg_color, 1.04);
 
     box-shadow: inset -1px 0 shade (@bg_color, 0.94);
-}
-
-/**************
- * background *
- **************/
-.background {
-    background-color: @bg_color;
-    border-width: 0;
 }
 
 /**********
