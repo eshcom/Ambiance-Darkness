@@ -1,6 +1,19 @@
-gtk-color-scheme = "base_color:#3A3935\nfg_color:#dfdbd2\ntooltip_fg_color:#ffffff\nselected_bg_color:#f07746\nselected_fg_color:#FFFFFF\ntext_color:#E0E0E0\nbg_color:#494841\ntooltip_bg_color:#494841\nlink_color:#FF7954\nlight_grey:#cdcdcd\nbg_color_dark:#3c3b37\nfg_color_dark:#dfdbd2"
+gtk-color-scheme = "base_color:#3A3935\nfg_color:#dfdbd2\ntooltip_fg_color:#ECECE4\nselected_bg_color:#E16F41\nselected_fg_color:#ECECE4\ntext_color:#E1E1DB\nbg_color:#494841\ntooltip_bg_color:#494841\nlink_color:#FB7753\nlight_grey:#CDCCC9\nbg_color_dark:#3c3b37\nfg_color_dark:#dfdbd2"
 
 gtk-icon-sizes = "panel-menu=22,22:gtk-button=16,16"
+#~ panel-menu=22,22
+#~ panel-menu-bar=16,16
+#~ gtk-button=16,16
+#~ panel=16,16
+#~ gtk-menu=16,16
+#~ gtk-large-toolbar=24,24
+#~ gtk-small-toolbar=16,16
+#~ gtk-dialog=16,16
+#~ gtk-dnd=16,16
+#~ panel-applications-menu=24,24
+#~ panel-directory-menu=24,24
+#~ directorymenu-button=22,22
+#~ panel-window-menu=32,32
 
 gtk-auto-mnemonics = 1
 gtk-alternative-sort-arrows = 1
@@ -22,8 +35,8 @@ style "default" {
 
 	GtkRange::trough-border = 0
 	GtkRange::slider-width = 14
-	GtkRange::stepper-size = 0
-	GtkRange::trough-under-steppers = 0
+	GtkRange::stepper-size = 13
+	GtkRange::trough-under-steppers = 1
 
 	GtkScale::trough-border = 0
 	GtkScale::slider-width = 23
@@ -34,6 +47,9 @@ style "default" {
 	GtkScrollbar::trough-border = 0
 	GtkScrollbar::slider-width = 12
 	GtkScrollbar::min-slider-length = 31
+
+        GtkScrolledWindow::scrollbar-spacing   = 0
+        GtkScrolledWindow::scrollbars-within-bevel = 0
 
 	GtkMenuBar::internal-padding = 0
 	GtkMenuBar::shadow-type = GTK_SHADOW_NONE
@@ -84,7 +100,7 @@ style "default" {
 	text[NORMAL]      = @text_color
 	text[PRELIGHT]    = @text_color
 	text[SELECTED]    = @selected_fg_color
-	text[INSENSITIVE] = darker (@text_color)
+	text[INSENSITIVE] = shade (0.8, @text_color)
 	text[ACTIVE]      = darker (@text_color)
 
 	base[NORMAL]      = @base_color
@@ -99,7 +115,7 @@ style "default" {
 		reliefstyle = 3
 		highlight_shade = 1.0
 		glazestyle = 0
-		default_button_color = shade (1.4, "#3D3D3D")
+		default_button_color = shade (1.1, "#3D3C39")
 		gradient_shades = {1.1, 1.0, 1.0, 0.9}
 		roundness = 4
 		lightborder_shade = 1.26
@@ -113,17 +129,17 @@ style "default" {
 		focusstyle = 3
 		handlestyle = 1
 		sliderstyle = 3
-		scrollbarstyle = 0
-		stepperstyle = 0
+		scrollbarstyle = 2
+		stepperstyle = 3
 #		rgba = TRUE
 	}
 }
 
 style "dark"
 {
-	color["bg_color_dark"] 	= "#3C3C3C"
-	color["fg_color_dark"] 	= "#E0E0E0"
-	color["selected_fg_color_dark"] = "#ffffff"
+	color["bg_color_dark"] 	= "#3c3b37"
+	color["fg_color_dark"] 	= "#dfdbd2"
+	color["selected_fg_color_dark"] = "#ECECE4"
 
 	fg[NORMAL]        = @fg_color_dark
 	fg[PRELIGHT]	  = shade (1.15, @fg_color_dark)
@@ -134,7 +150,7 @@ style "dark"
 	bg[NORMAL]        = @bg_color_dark
 	bg[ACTIVE]	  = shade (0.8, @bg_color_dark)
 	bg[SELECTED]      = @selected_bg_color
-	bg[PRELIGHT]      = shade (1.0, "#4D4D4D")
+	bg[PRELIGHT]      = shade (1.0, "#4D4C48")
 	bg[INSENSITIVE]   = shade (0.85, @bg_color_dark)
   	
 	text[NORMAL]      = @fg_color_dark
@@ -172,11 +188,11 @@ style "hscale" {
 #	xthickness = 3
 #	ythickness = 3
 #
-#	bg[NORMAL] = shade (1.07, "#cdcdcd")
-#	bg[PRELIGHT] = shade (1.09, "#cdcdcd")
-#	bg[ACTIVE] = shade (1.0, "#cdcdcd")
-#	bg[INSENSITIVE] = mix (0.25, @bg_color, "#e2e1e1")
-#	fg[INSENSITIVE] = "#9c9c9c"
+#	bg[NORMAL] = shade (1.07, "#CDCCC9")
+#	bg[PRELIGHT] = shade (1.09, "#CDCCC9")
+#	bg[ACTIVE] = shade (1.0, "#CDCCC9")
+#	bg[INSENSITIVE] = mix (0.25, @bg_color, "#E2E1DD")
+#	fg[INSENSITIVE] = "#9C9B99"
 #
 #	engine "murrine" {
 #		#contrast = 1.0
@@ -199,7 +215,7 @@ style "button" {
 	bg[PRELIGHT] = shade (1.06, @bg_color)
 	bg[ACTIVE] = shade (0.96, @bg_color)
 	bg[INSENSITIVE] = @bg_color
-	fg[INSENSITIVE] = "#9c9c9c"
+	fg[INSENSITIVE] = "#9C9B99"
 
 	engine "murrine" {
 		#contrast = 1.0
@@ -226,22 +242,24 @@ style "spinbutton" = "notebook_button" {
 }
 
 style "scrollbar" = "button" {
-	xthickness = 0
-	ythickness = 0
+	xthickness = 2
+	ythickness = 2
 
-	bg[NORMAL] = shade (1.7, @base_color)
-	bg[PRELIGHT] = shade (2.1, @base_color)
-	bg[ACTIVE] = shade (2.1, @base_color)
+	bg[NORMAL] = @base_color
+	bg[PRELIGHT] = shade (1.04, @base_color)
+	bg[ACTIVE] = shade (0.96, @base_color)
 
 	engine "murrine"
 	{
-		roundness = 0
+		border_shades = {0.95, 0.90}
+		roundness = 20
 		contrast = 1.0
-		border_shades = {1.00, 0.96}
+		trough_shades = {0.92, 0.98}
 		lightborder_shade = 1.3
-		glowstyle = 1
+		glowstyle = 5
 		glow_shade = 1.02
-		gradient_shades = {1.2, 1.1, 1.1, 1.0}
+		gradient_shades = {1.2, 1.0, 1.0, 0.86}
+		trough_border_shades = {0.9, 0.98}
 	}
 }
 
@@ -259,9 +277,9 @@ style "overlay_scrollbar"
 }
 
 style "scale" = "button" {
-	bg[NORMAL] = shade (1.10, @light_grey)
-	bg[PRELIGHT] = shade (1.12, @light_grey)
-	bg[ACTIVE] = shade (0.77, @bg_color)
+	bg[NORMAL] = @light_grey
+	bg[PRELIGHT] = shade (1.06, @light_grey)
+	bg[ACTIVE] = shade (0.94, @bg_color)
 
 	engine "murrine" {
 		contrast = 0.6
@@ -278,8 +296,10 @@ style "scale" = "button" {
 }
 
 style "notebook_bg" {
+	# esh: bg[NORMAL] - set active tab color in geany/doublecmd
 	bg[NORMAL] = shade (1.02, @bg_color)
-	bg[ACTIVE] = shade (0.97, @bg_color)
+	# esh: bg[ACTIVE] - set inactive tab color in geany/doublecmd
+	bg[ACTIVE] = shade (0.82, @bg_color)
 	fg[ACTIVE] = mix (0.8, @fg_color, shade (0.97, @bg_color))
 }
 
@@ -316,9 +336,7 @@ style "comboboxentry" = "notebook_button" {
 }
 
 style "menubar" = "dark" {
-
-bg[NORMAL] = "#3A3935"
-
+	bg[NORMAL] = "#3A3935"
 	engine "murrine" {
 		textstyle = 2
 		text_shade = 0.33
@@ -341,17 +359,17 @@ style "toolbar-button" = "notebook_button" {
 }
 
 style "menu" = "dark" {
-xthickness = 0
-ythickness = 0
+	xthickness = 0
+	ythickness = 0
 
-bg[NORMAL] = "#494841"
-bg[INSENSITIVE] = "#8E8B85"
-fg[INSENSITIVE]   = "#8E8B85"
+	bg[NORMAL] = "#494841"
+	bg[INSENSITIVE] = "#8E8B85"
+	fg[INSENSITIVE]   = "#8E8B85"
 
-engine "murrine"
-{
-roundness = 0
-}
+	engine "murrine"
+	{
+		roundness = 0
+	}
 }
 
 style "menu_item" = "menu" {
@@ -386,7 +404,7 @@ style "scale_menu_item" = "scale" {
 	GtkScale::slider-width = 21
 	GtkScale::slider-length = 13
 
-	bg[ACTIVE] = shade(0.98, "#4D4D4D")
+	bg[ACTIVE] = shade(0.98, "#4D4C48")
 	bg[INSENSITIVE] = shade (0.9, @bg_color)
 
 	engine "murrine" {
@@ -449,7 +467,7 @@ style "progressbar" {
 
 	bg[ACTIVE] = shade (0.94, @bg_color)
 	fg[PRELIGHT] = @selected_fg_color
-	#bg[SELECTED] = "#cdcdcd"
+	#bg[SELECTED] = "#CDCCC9"
 
 	engine "murrine" {
 		#trough_shades = {0.98, 1.02}
@@ -463,7 +481,7 @@ style "progressbar" {
 }
 
 style "progressbar_menu_item" = "progressbar" {
-	bg[ACTIVE] = shade(0.98, "#4D4D4D")
+	bg[ACTIVE] = shade(0.98, "#4D4C48")
 
 	engine "murrine" {
 		roundness = 0
@@ -532,6 +550,10 @@ style "nautilus_location" {
 	bg[NORMAL]  = mix (0.60, shade (1.05, @bg_color), @selected_bg_color)
 }
 
+style "caja_location" {
+	bg[NORMAL]  = mix (0.60, shade (1.05, @bg_color), @selected_bg_color)
+}
+
 style "calendar" {
 	xthickness = 0
 	ythickness = 0
@@ -542,8 +564,8 @@ style "calendar" {
 }
 
 style "calendar_menu_item" = "calendar" {
-	base[NORMAL] = "#606060"
-	base[ACTIVE] = "#4B4B4B"
+	base[NORMAL] = "#605E58"
+	base[ACTIVE] = "#4b4944"
 }
 
 style "iconview" {
@@ -595,17 +617,16 @@ style "evo_new_button_workaround" {
 
 # Make the XFCE desktop icons text backrounds look prettier (The only change to theme, Code by RAVEfinity Project) 
 style "xfdesktop-icon-view" {
+	XfdesktopIconView::label-alpha = 100
 
-XfdesktopIconView::label-alpha = 100
+	base[NORMAL]     	= "#151515"
+	base[ACTIVE]     	= "#7F7C7C"
+	base[PRELIGHT]   	= "#7F7C7C"
+	base[SELECTED]   	= shade (0.98, @selected_bg_color)
 
-base[NORMAL]     	= "#151515"
-base[ACTIVE]     	= "#7F7C7C"
-base[PRELIGHT]   	= "#7F7C7C"
-base[SELECTED]   	= shade (0.98, @selected_bg_color)
-
-fg[NORMAL] = @selected_fg_color
-fg[SELECTED] = @selected_fg_color
-fg[ACTIVE] = @selected_fg_color
+	fg[NORMAL] = @selected_fg_color
+	fg[SELECTED] = @selected_fg_color
+	fg[ACTIVE] = @selected_fg_color
 }
 
 ###############################################################################
@@ -712,9 +733,14 @@ widget_class "*.ETree.ECanvas" style "treeview_header"
 # ToDo: A more generic approach for all applications that have a widget like this.
 widget "*.nautilus-extra-view-widget" style : highest "nautilus_location"
 
+# Special case the caja-extra-view-widget
+# ToDo: A more generic approach for all applications that have a widget like this.
+widget "*.caja-extra-view-widget" style : highest "caja_location"
+
 # Work around for http://bugzilla.gnome.org/show_bug.cgi?id=382646
 # Note that this work around assumes that the combobox is _not_ in appears-as-list mode.
 widget_class "*.<GtkComboBox>.<GtkCellView>" style "text_is_fg_color_workaround"
+
 # This is the part of the workaround that fixes the menus
 widget "*.gtk-combobox-popup-menu.*" style "menuitem_text_is_fg_color_workaround"
 
@@ -723,7 +749,7 @@ widget "*.gtk-combobox-popup-menu.*" style "menuitem_text_is_fg_color_workaround
 widget_class "*<GtkListItem>*" style "fg_is_text_color_workaround"
 # GtkCList also uses the fg color to draw text on top of the base colors.
 widget_class "*<GtkCList>" style "fg_is_text_color_workaround"
-# Nautilus when renaming files, and maybe other places.
+# Nautilus/Caja when renaming files, and maybe other places.
 widget_class "*<EelEditableLabel>" style "fg_is_text_color_workaround"
 # Work around for ubuntu's lucid sound indicator
 widget "ido-offscreen-scale" style "soundfix"
@@ -732,6 +758,21 @@ widget "*IdoEntryMenuItem*" style "wide"
 
 # See the documentation of the style.
 widget_class "EShellWindow.GtkVBox.BonoboDock.BonoboDockBand.BonoboDockItem*" style "evo_new_button_workaround"
+
+# Various performance fixes if murrine textstyle is on by default in the theme.
+style "performance-fix" {
+ engine "murrine" {
+   textstyle = 0
+   contrast = 0.5
+ }
+}
+
+widget_class "*gtkmm__GtkWindow*"  style "performance-fix" # Inkscape
+widget_class "*GimpDisplayShell*"  style "performance-fix" # Gimp
+widget_class "*GimpToolbox*"   style "performance-fix"
+widget_class "*GimpMenuDock*"    style "performance-fix"
+widget "*OOoFixed*"          style "performance-fix" # Openoffice/Libreoffice
+widget_class "*MozContainer*"    style "performance-fix" # Firefox (Not sure if this one does anything though.)
 
 # Makes XFCE desktop icon and text backround tweaks work.
 widget_class "*XfdesktopIconView*" style "xfdesktop-icon-view"
@@ -742,6 +783,7 @@ include "apps/chromium.rc"
 include "apps/ff.rc"
 include "apps/gnome-terminal.rc"
 include "apps/nautilus.rc"
+include "apps/caja.rc"
 include "apps/gnome-panel.rc"
 include "apps/panel-menus.rc"
 include "apps/mintmenu.rc"
