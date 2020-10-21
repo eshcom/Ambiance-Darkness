@@ -1182,7 +1182,8 @@ GtkScale.mark {
     -GtkScrollbar-has-forward-stepper: 0;
     -GtkScrollbar-trough-border: 0;
     -GtkScrollbar-min-slider-length: 31;
-    -GtkRange-slider-width: 11;
+	/* esh: 11 - default, 15 - FullHD 24", 18 - WQHD 27" */
+    -GtkRange-slider-width: 18;
 
     background-color: @scrollbar_track_color;
     background-image: none;

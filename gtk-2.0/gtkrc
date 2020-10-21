@@ -45,7 +45,8 @@ style "default" {
 
 	GtkScrollbar::activate-slider = 1
 	GtkScrollbar::trough-border = 0
-	GtkScrollbar::slider-width = 12
+	# esh: 12 - default, 15 - FullHD 24", 18 - WQHD 27"
+	GtkScrollbar::slider-width = 18
 	GtkScrollbar::min-slider-length = 31
 
         GtkScrolledWindow::scrollbar-spacing   = 0
