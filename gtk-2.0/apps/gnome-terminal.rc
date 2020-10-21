@@ -13,7 +13,7 @@ style "terminal_menubar"
 
 style "terminal_notebook" = "dark"
 {
-	fg[ACTIVE] = mix (0.8, "#dfdbd2", "#3c3b37")
+	fg[ACTIVE] = mix (0.8, @fg_color, @bg_color_dark)
 
 	engine "murrine" {
 	}
@@ -21,11 +21,11 @@ style "terminal_notebook" = "dark"
 
 style "terminal_scrollbar" = "scrollbar"
 {
-	bg[NORMAL]        = "#3c3b37"
-	bg[PRELIGHT]      = shade(1.08, "#3c3b37")
-	bg[ACTIVE]        = shade(0.94, "#3c3b37")
+	bg[NORMAL]        = @bg_color_dark
+	bg[PRELIGHT]      = shade(1.08, @bg_color_dark)
+	bg[ACTIVE]        = shade(0.94, @bg_color_dark)
 	bg[SELECTED]      = shade(1.0, @selected_bg_color)
-	bg[INSENSITIVE]   = "#3c3b37"
+	bg[INSENSITIVE]   = @bg_color_dark
 
 	engine "murrine" {
 	}
@@ -33,8 +33,8 @@ style "terminal_scrollbar" = "scrollbar"
 
 style "terminal_screen"
 {
-	text[NORMAL] = "#ffffff"
-	base[NORMAL] = "#300a24"
+	text[NORMAL] = @terminal_text
+	base[NORMAL] = @terminal_base
 
 	TerminalScreen::background-darkness = 0.95
 }

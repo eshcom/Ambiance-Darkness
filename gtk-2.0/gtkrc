@@ -1,4 +1,14 @@
-gtk-color-scheme = "base_color:#3A3935\nfg_color:#dfdbd2\ntooltip_fg_color:#ECECE4\nselected_bg_color:#E16F41\nselected_fg_color:#ECECE4\ntext_color:#E1E1DB\nbg_color:#494841\ntooltip_bg_color:#494841\nlink_color:#FB7753\nlight_grey:#CDCCC9\nbg_color_dark:#3c3b37\nfg_color_dark:#dfdbd2"
+gtk-color-scheme = "base_color:#3A3935\nbg_color:#494841\nselected_bg_color:#E16F41\nbg_color_dark:#3c3b37" # Background, base.
+gtk-color-scheme = "text_color:#E1E1DB\nfg_color:#dfdbd2\nselected_fg_color:#ECECE4\nfg_color_dark:#dfdbd2" # Foreground, text.
+gtk-color-scheme = "tooltip_bg_color:#494841\ntooltip_fg_color:#ECECE4\ntooltip_select:#000000"				# Tooltips.
+gtk-color-scheme = "link_color:#FB7753"																		# Hyperlinks
+gtk-color-scheme = "light_grey:#CDCCC9"																		# Background
+gtk-color-scheme = "menu_item_active:#5c5b56"																# Background
+gtk-color-scheme = "icon_view_active:#7F7C7C\nicon_view_normal:#151515"										# Base
+gtk-color-scheme = "button_fg_insens:#9C9B99\ndefault_button:#3D3C39\nbutton_bg_insens:#E2E1DD"				# Buttons
+gtk-color-scheme = "terminal_base:#300a24\nterminal_text:#ffffff"											# Terminal
+gtk-color-scheme = "calendar_base_normal:#605E58\ncalendar_base_active:#4b4944"								# Calendar
+gtk-color-scheme = "menu_dark_insens:#8E8B85\nframe_grad_color:#5c5b56"										# Other
 
 gtk-icon-sizes = "panel-menu=22,22:gtk-button=16,16"
 #~ panel-menu=22,22
@@ -116,7 +126,7 @@ style "default" {
 		reliefstyle = 3
 		highlight_shade = 1.0
 		glazestyle = 0
-		default_button_color = shade (1.1, "#3D3C39")
+		default_button_color = shade (1.1, @default_button)
 		gradient_shades = {1.1, 1.0, 1.0, 0.9}
 		roundness = 4
 		lightborder_shade = 1.26
@@ -138,9 +148,9 @@ style "default" {
 
 style "dark"
 {
-	color["bg_color_dark"] 	= "#3c3b37"
-	color["fg_color_dark"] 	= "#dfdbd2"
-	color["selected_fg_color_dark"] = "#ECECE4"
+	color["bg_color_dark"] 	= @bg_color_dark
+	color["fg_color_dark"] 	= @fg_color
+	color["selected_fg_color_dark"] = @tooltip_fg_color
 
 	fg[NORMAL]        = @fg_color_dark
 	fg[PRELIGHT]	  = shade (1.15, @fg_color_dark)
@@ -151,7 +161,7 @@ style "dark"
 	bg[NORMAL]        = @bg_color_dark
 	bg[ACTIVE]	  = shade (0.8, @bg_color_dark)
 	bg[SELECTED]      = @selected_bg_color
-	bg[PRELIGHT]      = shade (1.0, "#4D4C48")
+	bg[PRELIGHT]      = shade (1.0, @menu_item_active)
 	bg[INSENSITIVE]   = shade (0.85, @bg_color_dark)
   	
 	text[NORMAL]      = @fg_color_dark
@@ -189,11 +199,11 @@ style "hscale" {
 #	xthickness = 3
 #	ythickness = 3
 #
-#	bg[NORMAL] = shade (1.07, "#CDCCC9")
-#	bg[PRELIGHT] = shade (1.09, "#CDCCC9")
-#	bg[ACTIVE] = shade (1.0, "#CDCCC9")
-#	bg[INSENSITIVE] = mix (0.25, @bg_color, "#E2E1DD")
-#	fg[INSENSITIVE] = "#9C9B99"
+#	bg[NORMAL] = shade (1.07, @light_grey)
+#	bg[PRELIGHT] = shade (1.09, @light_grey)
+#	bg[ACTIVE] = shade (1.0, @light_grey)
+#	bg[INSENSITIVE] = mix (0.25, @bg_color, @button_bg_insens)
+#	fg[INSENSITIVE] = @button_fg_insens
 #
 #	engine "murrine" {
 #		#contrast = 1.0
@@ -216,7 +226,7 @@ style "button" {
 	bg[PRELIGHT] = shade (1.06, @bg_color)
 	bg[ACTIVE] = shade (0.96, @bg_color)
 	bg[INSENSITIVE] = @bg_color
-	fg[INSENSITIVE] = "#9C9B99"
+	fg[INSENSITIVE] = @button_fg_insens
 
 	engine "murrine" {
 		#contrast = 1.0
@@ -337,7 +347,7 @@ style "comboboxentry" = "notebook_button" {
 }
 
 style "menubar" = "dark" {
-	bg[NORMAL] = "#3A3935"
+	bg[NORMAL] = @base_color
 	engine "murrine" {
 		textstyle = 2
 		text_shade = 0.33
@@ -363,9 +373,9 @@ style "menu" = "dark" {
 	xthickness = 0
 	ythickness = 0
 
-	bg[NORMAL] = "#494841"
-	bg[INSENSITIVE] = "#8E8B85"
-	fg[INSENSITIVE]   = "#8E8B85"
+	bg[NORMAL] = @bg_color
+	bg[INSENSITIVE] = @menu_dark_insens
+	fg[INSENSITIVE]   = @menu_dark_insens
 
 	engine "murrine"
 	{
@@ -405,7 +415,7 @@ style "scale_menu_item" = "scale" {
 	GtkScale::slider-width = 21
 	GtkScale::slider-length = 13
 
-	bg[ACTIVE] = shade(0.98, "#4D4C48")
+	bg[ACTIVE] = shade(0.98, @menu_item_active)
 	bg[INSENSITIVE] = shade (0.9, @bg_color)
 
 	engine "murrine" {
@@ -468,7 +478,7 @@ style "progressbar" {
 
 	bg[ACTIVE] = shade (0.94, @bg_color)
 	fg[PRELIGHT] = @selected_fg_color
-	#bg[SELECTED] = "#CDCCC9"
+	#bg[SELECTED] = @light_grey
 
 	engine "murrine" {
 		#trough_shades = {0.98, 1.02}
@@ -482,7 +492,7 @@ style "progressbar" {
 }
 
 style "progressbar_menu_item" = "progressbar" {
-	bg[ACTIVE] = shade(0.98, "#4D4C48")
+	bg[ACTIVE] = shade(0.98, @menu_item_active)
 
 	engine "murrine" {
 		roundness = 0
@@ -535,7 +545,7 @@ style "tooltips" {
 
 	bg[NORMAL]        = @tooltip_bg_color
 	fg[NORMAL]        = @tooltip_fg_color
-	bg[SELECTED]      = "#000000"
+	bg[SELECTED]      = @tooltip_select
 
 	engine "murrine" {
 		rgba = TRUE
@@ -565,8 +575,8 @@ style "calendar" {
 }
 
 style "calendar_menu_item" = "calendar" {
-	base[NORMAL] = "#605E58"
-	base[ACTIVE] = "#4b4944"
+	base[NORMAL] = @calendar_base_normal
+	base[ACTIVE] = @calendar_base_active
 }
 
 style "iconview" {
@@ -620,9 +630,9 @@ style "evo_new_button_workaround" {
 style "xfdesktop-icon-view" {
 	XfdesktopIconView::label-alpha = 100
 
-	base[NORMAL]     	= "#151515"
-	base[ACTIVE]     	= "#7F7C7C"
-	base[PRELIGHT]   	= "#7F7C7C"
+	base[NORMAL]     	= @icon_view_normal
+	base[ACTIVE]     	= @icon_view_active
+	base[PRELIGHT]   	= @icon_view_active
 	base[SELECTED]   	= shade (0.98, @selected_bg_color)
 
 	fg[NORMAL] = @selected_fg_color
