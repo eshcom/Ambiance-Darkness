@@ -327,7 +327,7 @@ style "notebook_bg" {
 	# esh: bg[ACTIVE] - set inactive tab bg-color in geany/doublecmd
 	bg[ACTIVE] = shade (0.82, @bg_color)
 	# esh: fg[ACTIVE] - set inactive tab fg-color in geany/doublecmd
-	fg[ACTIVE] = mix (0.6, @fg_color, shade (0.97, @bg_color))
+	fg[ACTIVE] = mix (0.65, @fg_color, shade (0.97, @bg_color))
 }
 
 # The color is changed by the notebook_bg style, this style
