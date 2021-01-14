@@ -1182,13 +1182,14 @@ GtkScale.mark {
     -GtkScrollbar-has-forward-stepper: 0;
     -GtkScrollbar-trough-border: 0;
     -GtkScrollbar-min-slider-length: 31;
-	/* esh: 11 - default, 15 - FullHD 24", 18 - WQHD 27" */
-    -GtkRange-slider-width: 18;
+    /* esh: 11 - default, 15 - FullHD 24", 16 - WQHD 27" */
+    -GtkRange-slider-width: 16;
 
     background-color: @scrollbar_track_color;
     background-image: none;
     background-size: 0;
     border: none;
+    /* esh: border-radius - scrollbar panel edges */
     border-radius: 0;
 }
 
@@ -1211,23 +1212,24 @@ GtkScale.mark {
  */
 .scrollbar.vertical:hover:dir(ltr),
 .scrollbar.vertical.dragging:dir(ltr) {
-    margin-left: 2px;
+    margin-left: 0px;
 }
 
 .scrollbar.vertical:hover:dir(rtl),
 .scrollbar.vertical.dragging:dir(rtl) {
-    margin-right: 2px;
+    margin-right: 0px;
 }
 
 .scrollbar.horizontal:hover,
 .scrollbar.horizontal.dragging,
 .scrollbar.horizontal.slider:hover,
 .scrollbar.horizontal.slider.dragging {
-    margin-top: 2px;
+    margin-top: 0px;
 }
 
 .scrollbar.slider {
-    background-color: alpha(@selected_bg_color, 0.8);
+    /* esh: background-color - slider color */
+    background-color: alpha(@selected_bg_color, 0.6);
     border-radius: 1px;
 }
 
@@ -1241,31 +1243,32 @@ GtkScale.mark {
  * this allows to define some kind of proximity effect also on mouse-enter
  */
 .scrollbar.slider.vertical:dir(ltr):not(:hover):not(.dragging) {
-    margin-left: 7px;
+    margin-left: 0px;
 }
 
 .scrollbar.slider.vertical:dir(rtl):not(:hover):not(.dragging) {
-    margin-right: 7px;
+    margin-right: 0px;
 }
 
 .scrollbar.slider.horizontal:not(:hover):not(.dragging) {
-    margin-top: 7px;
+    margin-top: 0px;
 }
 
 .scrollbar.slider:hover {
-    background-color: alpha(@selected_bg_color, 0.85);
+    /* esh: background-color - slider color on mouse hover */
+    background-color: alpha(@selected_bg_color, 0.8);
 }
 
 .scrollbar.slider:active {
-    background-color: @selected_bg_color;
+    background-color: alpha(@selected_bg_color, 0.5);
 }
 
 .scrollbar.slider:backdrop {
-    background-color: alpha(@backdrop_filling_bg, 0.8);
+    background-color: alpha(@backdrop_filling_bg, 0.6);
 }
 
 .scrollbar.slider:hover:backdrop {
-    background-color: alpha(@backdrop_filling_bg, 0.85);
+    background-color: alpha(@backdrop_filling_bg, 0.8);
 }
 
 .scrollbar.slider:active:backdrop {

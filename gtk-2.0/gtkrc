@@ -285,9 +285,9 @@ style "scrollbar" = "button" {
 	# esh: bg[NORMAL] - set scrollbar color
 	bg[NORMAL] = @scrollbar_color
 	# esh: bg[PRELIGHT] - set scrollbar color on mouse hover
-	bg[PRELIGHT] = shade (1.1, @scrollbar_color)
+	bg[PRELIGHT] = shade (1.15, @scrollbar_color)
 	# esh: bg[ACTIVE] - set scrollbar color on mouse hold
-	bg[ACTIVE] = shade (0.96, @scrollbar_color)
+	bg[ACTIVE] = shade (0.9, @scrollbar_color)
 
 	engine "murrine"
 	{
