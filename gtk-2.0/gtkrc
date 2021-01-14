@@ -99,13 +99,15 @@ style "default" {
 	####################
 	# Color Definitions
 	####################
+	color["shade_selected_bg_color"] = shade (0.5, @selected_bg_color)
+	
 	bg[NORMAL]        = @bg_color
 	bg[PRELIGHT]      = shade (1.02, @bg_color)
 	# esh: bg[SELECTED] - set focused tab bg-color
 	bg[SELECTED]      = @selected_bg_color
 	bg[INSENSITIVE]   = shade (0.95, @bg_color)
 	# esh: bg[ACTIVE] - set selected store (disk) bg-color in doublecmd
-	bg[ACTIVE]        = shade (0.6, @selected_bg_color)
+	bg[ACTIVE]        = @shade_selected_bg_color
 
 	# esh: fg[NORMAL] - set selected tab fg-color
 	fg[NORMAL]        = @fg_color
@@ -128,7 +130,7 @@ style "default" {
 	base[SELECTED]    = @selected_bg_color
 	base[INSENSITIVE] = shade (0.97, @bg_color)
 	# esh: base[ACTIVE] - set selected treeview's item bg-color
-	base[ACTIVE]      = shade (0.5, @selected_bg_color)
+	base[ACTIVE]      = @shade_selected_bg_color
 
 	engine "murrine" {
 		contrast = 0.6
@@ -143,6 +145,7 @@ style "default" {
 		lightborderstyle = 1
 		listviewstyle = 2
 		progressbarstyle = 0
+		# esh: colorize_scrollbar = TRUE set orange color for scrollbar
 		colorize_scrollbar = FALSE
 		menubaritemstyle = 1
 		menubarstyle = 1
@@ -266,7 +269,7 @@ style "scrollbar" = "button" {
 	xthickness = 2
 	ythickness = 2
 
-	color["scrollbar_color"] = shade (0.45, @selected_bg_color)
+	color["scrollbar_color"] = shade (0.48, @selected_bg_color)
 
 	# esh: bg[NORMAL] - set scrollbar color
 	bg[NORMAL] = @scrollbar_color
