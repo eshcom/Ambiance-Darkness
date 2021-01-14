@@ -103,17 +103,19 @@ style "default" {
 	
 	bg[NORMAL]        = @bg_color
 	bg[PRELIGHT]      = shade (1.02, @bg_color)
-	# esh: bg[SELECTED] - set focused tab bg-color
+	# esh: bg[SELECTED] - set focused tab/checked checkbox/etc. bg-color
 	bg[SELECTED]      = @selected_bg_color
 	bg[INSENSITIVE]   = shade (0.95, @bg_color)
 	# esh: bg[ACTIVE] - set selected store (disk) bg-color in doublecmd
 	bg[ACTIVE]        = @shade_selected_bg_color
 
-	# esh: fg[NORMAL] - set selected tab fg-color
+	# esh: fg[NORMAL] - set selected/enabled tab/button/etc. fg-color
 	fg[NORMAL]        = @fg_color
+	# esh: fg[PRELIGHT] - set tab/button/etc. fg-color on mouse hover
 	fg[PRELIGHT]      = @fg_color
 	fg[SELECTED]      = @selected_fg_color
 	fg[INSENSITIVE]   = darker (@text_color)
+	# esh: fg[ACTIVE] - set button fg-color on mouse click
 	fg[ACTIVE]        = @fg_color
 
 	text[NORMAL]      = @text_color
@@ -235,8 +237,11 @@ style "button" {
 	xthickness = 3
 	ythickness = 3
 
+	# esh: bg[NORMAL] - button bg-color
 	bg[NORMAL] = shade (1.03, @bg_color)
-	bg[PRELIGHT] = shade (1.1, @bg_color)
+	# esh: bg[PRELIGHT] - button bg-color on mouse hover
+	bg[PRELIGHT] = mix (0.86, shade (1.1, @bg_color), @selected_bg_color)
+	# esh: bg[ACTIVE] - button bg-color on mouse click
 	bg[ACTIVE] = shade (0.96, @bg_color)
 	bg[INSENSITIVE] = @bg_color
 	fg[INSENSITIVE] = @button_fg_insens
