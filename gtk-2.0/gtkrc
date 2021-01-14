@@ -1,4 +1,4 @@
-gtk-color-scheme = "base_color:#2E2D2A\nbg_color:#3D3C37\nselected_bg_color:#E16F41\nbg_color_dark:#3c3b37" # Background, base.
+gtk-color-scheme = "base_color:#2E2D2A\nbg_color:#3D3C37\nselected_bg_color:#E16F41\nbg_color_dark:#3D3C37" # Background, base.
 gtk-color-scheme = "text_color:#E1E1DB\nfg_color:#dfdbd2\nselected_fg_color:#ECECE4\nfg_color_dark:#dfdbd2" # Foreground, text.
 gtk-color-scheme = "tooltip_bg_color:#3D3C37\ntooltip_fg_color:#ECECE4\ntooltip_select:#000000"				# Tooltips.
 gtk-color-scheme = "link_color:#FB7753"																		# Hyperlinks

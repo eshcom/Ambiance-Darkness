@@ -109,10 +109,10 @@
 }
 
 .button:hover {
+    /* esh: button bg-color on mouse hover */
     background-image: -gtk-gradient (linear, left top, left bottom,
-                                     from (shade (@button_bg_color, 1.12)),
-                                     color-stop (0.5, @button_bg_color),
-                                     to (shade (@button_bg_color, 0.96)));
+                                     from (shade (@button_hover_bg_color, 1.4)),
+                                     to (shade (@button_hover_bg_color, 0.8)));
     border-image-source: url("assets/button-hover.png");
 }
 
@@ -147,8 +147,8 @@
     border-image-source: none;
 }
 
-/* esh: button selected/enabled */
 .button:checked {
+    /* esh: button selected/enabled bg-color */
     background-image: -gtk-gradient (linear, left top, left bottom,
                                      from (shade (@selected_bg_color, 0.65)),
                                      to (shade (@selected_bg_color, 0.4)));
@@ -159,11 +159,11 @@
     border-image-source: url("assets/button-active-focused.png");
 }
 
-/* esh: button color on press-down */
 .button:active {
+    /* esh: button bg-color on press-down */
     background-image: -gtk-gradient (linear, left top, left bottom,
-                                     from (shade (@dark_bg_color, 0.9)),
-                                     to (shade (@dark_bg_color, 0.95)));
+                                     from (shade (@dark_bg_color, 0.7)),
+                                     to (shade (@dark_bg_color, 0.6)));
     border-image-source: url("assets/button-active-hover.png");
 }
 
