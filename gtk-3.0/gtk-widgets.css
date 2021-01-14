@@ -81,7 +81,8 @@
 
     /* all button border images have the same size and are sliced in the same way */
     border-image-width: 10px 12px 10px 12px;
-    border-image-slice: 10 12 10 12;
+    /* esh: 10 12 10 12 -> 0 0 0 0 */
+    border-image-slice: 0 0 0 0;
     border-image-repeat: stretch;
 }
 
@@ -146,11 +147,11 @@
     border-image-source: none;
 }
 
-/* esh: button checked */
+/* esh: button selected/enabled */
 .button:checked {
     background-image: -gtk-gradient (linear, left top, left bottom,
-                                     from (#807E78),
-                                     to (#666560));
+                                     from (shade (@selected_bg_color, 0.65)),
+                                     to (shade (@selected_bg_color, 0.4)));
     border-image-source: url("assets/button-active.png");
 }
 
