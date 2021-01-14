@@ -95,6 +95,8 @@ style "default" {
 
 	GtkWidget::link-color = @link_color
 	GtkWidget::visited-link-color = @text_color
+	# esh: added new param (focus-line-width = 1 by default)
+	#GtkWidget::focus-line-width = 1
 
 	####################
 	# Color Definitions
@@ -103,7 +105,7 @@ style "default" {
 	
 	bg[NORMAL]        = @bg_color
 	bg[PRELIGHT]      = shade (1.02, @bg_color)
-	# esh: bg[SELECTED] - set focused tab/checked checkbox/etc. bg-color
+	# esh: bg[SELECTED] - set focused tab/checked checkbox/button border/etc. bg-color
 	bg[SELECTED]      = @selected_bg_color
 	bg[INSENSITIVE]   = shade (0.95, @bg_color)
 	# esh: bg[ACTIVE] - set selected store (disk) bg-color in doublecmd
@@ -140,6 +142,7 @@ style "default" {
 		reliefstyle = 3
 		highlight_shade = 1.0
 		glazestyle = 0
+		# esh: default_button_color - "OK"-button color
 		default_button_color = shade (1.1, @default_button)
 		gradient_shades = {1.1, 1.0, 1.0, 0.9}
 		roundness = 4
@@ -152,7 +155,10 @@ style "default" {
 		menubaritemstyle = 1
 		menubarstyle = 1
 		menustyle = 0
-		focusstyle = 3
+		# esh: focusstyle = 3 before my changed
+		focusstyle = 2
+		# esh: added new param focus_color
+		#focus_color = @test_color
 		handlestyle = 1
 		sliderstyle = 3
 		scrollbarstyle = 2
