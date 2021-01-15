@@ -280,14 +280,12 @@ style "scrollbar" = "button" {
 	xthickness = 2
 	ythickness = 2
 
-	color["scrollbar_color"] = shade (0.48, @selected_bg_color)
-
-	# esh: bg[NORMAL] - set scrollbar color
-	bg[NORMAL] = @scrollbar_color
-	# esh: bg[PRELIGHT] - set scrollbar color on mouse hover
-	bg[PRELIGHT] = shade (1.15, @scrollbar_color)
-	# esh: bg[ACTIVE] - set scrollbar color on mouse hold
-	bg[ACTIVE] = shade (0.9, @scrollbar_color)
+	# esh: bg[NORMAL] - set scrollbar/slider color
+	bg[NORMAL] = shade (0.65, @selected_bg_color)
+	# esh: bg[PRELIGHT] - set scrollbar/slider color on mouse hover
+	bg[PRELIGHT] = shade (0.75, @selected_bg_color)
+	# esh: bg[ACTIVE] - set scrollbar/slider color on mouse drag and hold
+	bg[ACTIVE] = shade (0.55, @selected_bg_color)
 
 	engine "murrine"
 	{

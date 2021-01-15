@@ -1229,7 +1229,7 @@ GtkScale.mark {
 }
 
 .scrollbar.slider {
-    /* esh: background-color - slider color */
+    /* esh: background-color - scrollbar/slider color */
     background-color: alpha(@selected_bg_color, 0.6);
     border-radius: 1px;
 }
@@ -1256,12 +1256,13 @@ GtkScale.mark {
 }
 
 .scrollbar.slider:hover {
-    /* esh: background-color - slider color on mouse hover */
-    background-color: alpha(@selected_bg_color, 0.8);
+    /* esh: background-color - scrollbar/slider color on mouse hover */
+    background-color: alpha(@selected_bg_color, 0.75);
 }
 
 .scrollbar.slider:active {
-    background-color: alpha(@selected_bg_color, 0.5);
+    /* esh: background-color - scrollbar/slider color on mouse drag and hold */
+    background-color: alpha(@selected_bg_color, 0.48);
 }
 
 .scrollbar.slider:backdrop {
@@ -1269,7 +1270,7 @@ GtkScale.mark {
 }
 
 .scrollbar.slider:hover:backdrop {
-    background-color: alpha(@backdrop_filling_bg, 0.8);
+    background-color: alpha(@backdrop_filling_bg, 0.75);
 }
 
 .scrollbar.slider:active:backdrop {
