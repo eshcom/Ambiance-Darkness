@@ -251,6 +251,8 @@ style "button" {
 	bg[ACTIVE] = shade (0.96, @bg_color)
 	bg[INSENSITIVE] = @bg_color
 	fg[INSENSITIVE] = @button_fg_insens
+	# esh: fg[ACTIVE] - button fg-color on mouse click
+	fg[ACTIVE] = darker (@fg_color)
 
 	engine "murrine" {
 		#contrast = 1.0
