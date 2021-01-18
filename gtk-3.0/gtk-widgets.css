@@ -160,7 +160,7 @@
 }
 
 .button:active {
-    /* esh: button bg-color on press-down */
+    /* esh: button bg-color on mouse click (press-down) */
     background-image: -gtk-gradient (linear, left top, left bottom,
                                      from (shade (@button_hover_bg_color, 0.7)),
                                      to (shade (@button_hover_bg_color, 0.6)));
