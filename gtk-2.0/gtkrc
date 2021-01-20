@@ -31,6 +31,7 @@ gtk-icon-sizes = "panel-menu=22,22:gtk-button=16,16"
 gtk-auto-mnemonics = 1
 gtk-alternative-sort-arrows = 1
 
+# esh: this style is used
 style "default" {
 	xthickness = 1
 	ythickness = 1
@@ -105,7 +106,7 @@ style "default" {
 	
 	bg[NORMAL]        = @bg_color
 	bg[PRELIGHT]      = shade (1.02, @bg_color)
-	# esh: bg[SELECTED] - set focused tab/checked checkbox/button border/etc. bg-color
+	# esh: bg[SELECTED] - set focused tab, checked checkbox/radiobox, button border, etc. bg-color
 	bg[SELECTED]      = @selected_bg_color
 	bg[INSENSITIVE]   = shade (0.95, @bg_color)
 	# esh: bg[ACTIVE] - set selected store (disk) bg-color in doublecmd
@@ -128,6 +129,7 @@ style "default" {
 	# esh: text[ACTIVE] - set selected treeview's item fg-color
 	text[ACTIVE]      = lighter (@text_color)
 
+	# esh: base[NORMAL] - panes/inputbox, unchecked checkbox/radiobox bg-color
 	base[NORMAL]      = @base_color
 	base[PRELIGHT]    = shade (0.98, @bg_color)
 	# esh: base[SELECTED] - set focused treeview's item bg-color
@@ -167,6 +169,7 @@ style "default" {
 	}
 }
 
+# esh: used for menu/menubar
 style "dark"
 {
 	color["bg_color_dark"] 	= @bg_color_dark
@@ -243,7 +246,7 @@ style "button" {
 	xthickness = 3
 	ythickness = 3
 
-	# esh: bg[NORMAL] - button bg-color
+	# esh: bg[NORMAL] - button bg-color, table header bg-color, frame unchecked checkbox/radiobox color in table/view
 	bg[NORMAL] = shade (1.03, @bg_color)
 	# esh: bg[PRELIGHT] - button bg-color on mouse hover
 	bg[PRELIGHT] = mix (0.86, shade (1.1, @bg_color), @selected_bg_color)
@@ -268,10 +271,13 @@ style "button" {
 	}
 }
 
+# esh: notebook_button - table header, frame unchecked checkbox/radiobox in table/view
 style "notebook_button" = "button" {
 }
 
 style "spinbutton" = "notebook_button" {
+	# esh: bg[NORMAL] - frame around spin-inputbox color
+	# esh: base[NORMAL] - spin-inputbox bg-color
 	xthickness = 4
 
 	engine "murrine" {
@@ -493,6 +499,7 @@ style "frame_title" {
 	fg[NORMAL] = lighter (@fg_color)
 }
 
+# esh: treeview - is table/view pane
 style "treeview" {
 	engine "murrine"
 	{
@@ -553,13 +560,21 @@ style "scrolledwindow" {
 	}
 }
 
+# esh: for GtkRadioButton and GtkCheckButton
 style "radiocheck"  = "button" {
-	text[NORMAL] = shade (0.535, @selected_bg_color)
-	text[PRELIGHT] = shade(1.06, shade (0.535, @selected_bg_color))
-	bg[NORMAL]   = shade (0.92, @bg_color)
-	bg[PRELIGHT] = mix (0.2, @selected_bg_color, shade(1.1, @bg_color))
-	fg[INSENSITIVE] = darker (@bg_color)
-	fg[ACTIVE] = @fg_color
+	# esh: base[NORMAL] - unchecked radiobox/checkbox bg-color
+	base[NORMAL]		= mix (0.05, @selected_bg_color, shade (0.75, @bg_color))
+
+	text[NORMAL]		= shade (0.535, @selected_bg_color)
+	text[PRELIGHT]		= shade(1.06, shade (0.535, @selected_bg_color))
+
+	# esh: bg[NORMAL] - frame around the radiobox/checkbox
+	bg[NORMAL]			= shade (0.92, @bg_color)
+	# esh: bg[PRELIGHT] - focused radiobox/checkbox line bg-color
+	bg[PRELIGHT]		= mix (0.2, @selected_bg_color, shade(1.1, @bg_color))
+
+	fg[INSENSITIVE]		= darker (@bg_color)
+	fg[ACTIVE]			= @fg_color
 
 	engine "murrine" {
 		reliefstyle = 3
