@@ -1,0 +1,25 @@
+.button:hover {
+    /* esh: button bg-color on mouse hover */
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                                     from (shade (@button_hover_bg_color, 1.4)),
+                                     to (shade (@button_hover_bg_color, 0.8)));
+    border-image-source: url("assets/button-hover.png");
+}
+
+.button:checked {
+    /* esh: button selected/enabled bg-color */
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                                     from (shade (@selected_bg_color, 0.65)),
+                                     to (shade (@selected_bg_color, 0.4)));
+    border-image-source: url("assets/button-active.png");
+}
+
+.button:active {
+    /* esh: button bg-color on mouse click (press-down) */
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                                     from (shade (@button_hover_bg_color, 0.7)),
+                                     to (shade (@button_hover_bg_color, 0.6)));
+    border-image-source: url("assets/button-active-hover.png");
+    color: darker(@fg_color)
+}
+

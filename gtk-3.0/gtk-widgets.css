@@ -893,7 +893,7 @@ GtkComboBox .menu .menuitem *:insensitive {
 
 /* give active tab a background, as it might be dragged across of others when reordering */
 .notebook tab:active {
-/* esh: background-color - set active tab color in meld */
+    /* esh: background-color - set active tab color in meld */
     background-color: @bg_color;
 }
 
@@ -1679,8 +1679,8 @@ GtkTextView {
 .maximized .titlebar.header-bar.toolbar-mode:not(:backdrop) {
     -GtkWidget-window-dragging: true;
 
-    /* esh:  tools-panel bg-color, inactive toggle-button bg-color
-       meld: tools panel, inactive toggle-button (ShowNew/ShowSame/ShowModified)
+    /* esh: tools-panel bg-color, inactive toggle-button bg-color,
+            example meld: tools panel, inactive toggle-button (ShowNew/ShowSame/ShowModified)
     */
     background-image: -gtk-gradient (linear, left top, left bottom,
                                      from (shade (@dark_bg_color, 0.96)),
@@ -1717,9 +1717,29 @@ GtkTextView {
     text-shadow: 0 -1px shade (@dark_bg_color, 0.7);
 }
 
-.primary-toolbar .button,
-.header-bar .button,
 .primary-toolbar .button.flat:hover {
+    /* esh: toggle-button bg-color on mouse hover,
+            example meld: ShowNew/ShowSame/ShowModified toggle-button
+    */
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                                     from (shade (@button_hover_bg_color, 1.4)),
+                                     to (shade (@button_hover_bg_color, 0.8)));
+    border-image-source: url("assets/button-hover.png");
+}
+
+.primary-toolbar .button.flat:active {
+    /* esh: toggle-button bg-color on mouse click (press-down)
+            example meld: ShowNew/ShowSame/ShowModified toggle-button
+    */
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                                     from (shade (@button_hover_bg_color, 0.7)),
+                                     to (shade (@button_hover_bg_color, 0.6)));
+    border-image-source: url("assets/button-active-hover.png");
+    color: darker(@fg_color)
+}
+
+.primary-toolbar .button,
+.header-bar .button {
     background: transparent;
     color: @dark_fg_color;
     text-shadow: 0 -1px shade (@dark_bg_color, 0.7);
@@ -1728,6 +1748,9 @@ GtkTextView {
 }
 
 .primary-toolbar .button.flat {
+    /* esh: inactive toggle-button bg-color,
+            example meld: inactive toggle-button (ShowNew/ShowSame/ShowModified)
+    */
     border-image-source: none;
     background: transparent;
 }
@@ -1770,13 +1793,19 @@ GtkTextView {
     border-image-source: url("assets/backdrop-button-toolbar-active.png");
 }
 
+.primary-toolbar .button:checked {
+    /* esh: active toggle-button bg-color,
+            example meld: active toggle-button (ShowNew/ShowSame/ShowModified)
+    */
+    background-image: -gtk-gradient (linear, left top, left bottom,
+                                     from (shade (@selected_bg_color, 0.65)),
+                                     to (shade (@selected_bg_color, 0.4)));
+    border-image-source: url("assets/button-active.png");
+}
+
 .primary-toolbar .button:hover,
-.primary-toolbar .button:checked,
 .header-bar .button:hover,
 .header-bar .button:checked {
-    /* esh:  active toggle-button bg-color
-       meld: active toggle-button (ShowNew/ShowSame/ShowModified)
-    */
     background-image: -gtk-gradient (linear, left top, left bottom,
                                      from (shade (@dark_bg_color, 1.2)),
                                      to (shade (@dark_bg_color, 1.1)));
