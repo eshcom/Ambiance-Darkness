@@ -1679,6 +1679,9 @@ GtkTextView {
 .maximized .titlebar.header-bar.toolbar-mode:not(:backdrop) {
     -GtkWidget-window-dragging: true;
 
+    /* esh:  tools-panel bg-color, inactive toggle-button bg-color
+       meld: tools panel, inactive toggle-button (ShowNew/ShowSame/ShowModified)
+    */
     background-image: -gtk-gradient (linear, left top, left bottom,
                                      from (shade (@dark_bg_color, 0.96)),
                                      to (shade (@dark_bg_color, 1.4)));
@@ -1771,6 +1774,9 @@ GtkTextView {
 .primary-toolbar .button:checked,
 .header-bar .button:hover,
 .header-bar .button:checked {
+    /* esh:  active toggle-button bg-color
+       meld: active toggle-button (ShowNew/ShowSame/ShowModified)
+    */
     background-image: -gtk-gradient (linear, left top, left bottom,
                                      from (shade (@dark_bg_color, 1.2)),
                                      to (shade (@dark_bg_color, 1.1)));
